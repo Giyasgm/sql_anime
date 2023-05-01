@@ -14,47 +14,35 @@ try:
     connection.autocommit = True
 
 
+    def print_waifus_from_db(sql_request):
+        with connection.cursor() as cursor:
+            cursor.execute(sql_request)
+            for i in cursor.fetchall():
+                print(f"Имя - {i[1]}, возраст - {i[2]}, рост - {i[3]}, цвет волос - {i[4]}, размер груди - {i[5]}, номер в таблице - {i[0]}")
+
     def defname(name):
-        with connection.cursor() as cursor:
-            cursor.execute(f"""SELECT * FROM anime WHERE name = '{name}';""")
-            for i in cursor.fetchall():
-                print(
-                    f"Имя - {i[1]}, возраст - {i[2]}, рост - {i[3]}, цвет волос - {i[4]}, размер груди - {i[5]}, номер в таблице - {i[0]}")
-
-
+        sql_request = f"""SELECT * FROM anime WHERE name = '{name}';"""
+        print_waifus_from_db(sql_request)
+        
     def defage(age):
-        with connection.cursor() as cursor:
-            cursor.execute(f"""SELECT * FROM anime WHERE age <= '{age}';""")
-            for i in cursor.fetchall():
-                print(
-                    f"Имя - {i[1]}, возраст - {i[2]}, рост - {i[3]}, цвет волос - {i[4]}, размер груди - {i[5]}, номер в таблице - {i[0]}")
-
+        sql_request = f"""SELECT * FROM anime WHERE age <= '{age}';"""
+        print_waifus_from_db(sql_request)
 
     def defheight(height):
-        with connection.cursor() as cursor:
-            cursor.execute(f"""SELECT * FROM anime WHERE height <= '{height}';""")
-            for i in cursor.fetchall():
-                print(
-                    f"Имя - {i[1]}, возраст - {i[2]}, рост - {i[3]}, цвет волос - {i[4]}, размер груди - {i[5]}, номер в таблице - {i[0]}")
-
+        sql_request = f"""SELECT * FROM anime WHERE eight <= '{height}';"""
+        print_waifus_from_db(sql_request)
 
     def defhair(hair):
-        with connection.cursor() as cursor:
-            cursor.execute(f"""SELECT * FROM anime WHERE hair_color = '{hair}';""")
-            for i in cursor.fetchall():
-                print(
-                    f"Имя - {i[1]}, возраст - {i[2]}, рост - {i[3]}, цвет волос - {i[4]}, размер груди - {i[5]}, номер в таблице - {i[0]}")
-
+        sql_request = f"""SELECT * FROM anime WHERE hair_color = '{hair}';"""
+        print_waifus_from_db(sql_request)
 
     def defsize(size):
-        with connection.cursor() as cursor:
-            cursor.execute(f"""SELECT * FROM anime WHERE breast_size = '{size}';""")
-            for i in cursor.fetchall():
-                print(
-                    f"Имя - {i[1]}, возраст - {i[2]}, рост - {i[3]}, цвет волос - {i[4]}, размер груди - {i[5]}, номер в таблице - {i[0]}")
-
+        sql_request = f"""SELECT * FROM anime WHERE breast_size = '{size}';"""
+        print_waifus_from_db(sql_request)
+    
 
     sfx = input("Введите один из перечисленных параметров: name, age, height, hair_color, breast_size - ")
+    
     if sfx == "name":
         print("Выберите одно из имён: ")
         time.sleep(2)
